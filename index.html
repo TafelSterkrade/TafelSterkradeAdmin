@@ -1,0 +1,146 @@
+<!-- index.html 18.09.2025 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tafel Sterkrade Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS wird wie bisher eingebunden -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/accordion.css">
+  <link rel="stylesheet" href="css/status.css">
+  <link rel="stylesheet" href="css/table-anmeldung.css">
+  <link rel="stylesheet" href="css/table-mitarbeiter.css">
+  <link rel="stylesheet" href="css/export.css">
+  <link rel="stylesheet" href="css/popup-overlay.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/xx_unused.css">
+
+
+
+<!-- Scripte -->
+<script src="js/Apps_Script_URL.js"></script>
+<script src="js/Load.js"></script>
+<script src="js/Start.js"></script>
+<!-- Die restlichen Scripte werden in "Load.js" geladen, nachdem DOM und Sections stehen
+  <script src="js/Manage.js"></script>
+  <script src="js/Anmeldung.js"></script>
+  <script src="js/Mitarbeiter.js"></script>
+  <script src="js/EventListener.js"></script>
+  <script src="js/Rapport.js"></script>
+  <script src="js/Tools.js"></script>
+-->
+
+
+</head>
+
+<body>
+<div class="app-container">
+
+  <!-- Header -->
+  <div id="header">
+    <div class="titleArea">
+      <h1>Tafel Test Admin</h1>
+      <div class="version" id="version-admin">Version 5.09.19-1</div>
+      <div class="admin-title" id="adminIdent">angemeldet als:</div>
+         <img src="TafelLogo.png" alt="Logo">
+    </div>
+  </div>
+
+  <!-- Ladebereich -->
+  <div id="loading-overlay" class="loading-state hidden">
+    <p id="loading-text">Daten werden geladen...</p> 
+
+    <div class="loading-step">
+     <span>Wartungsstatus wird geladen …</span>
+     <span id="spinner-wartung" class="spinner small"></span>
+   </div>
+
+   <div class="loading-step">
+      <span>Aktualisierungsstatus wird geladen …</span>
+     <span id="spinner-aktualisierung" class="spinner small"></span>
+   </div>
+
+    <div class="loading-step">
+      <span>Termine werden geladen …</span>
+      <span id="spinner-termine" class="spinner small"></span>
+    </div>
+
+    <div class="loading-step">
+     <span>Anmeldungstabelle wird geladen …</span>
+     <span id="spinner-anmeldung" class="spinner small"></span>
+    </div>
+
+   <div class="loading-step">
+     <span>Mitarbeiter werden geladen …</span>
+      <span id="spinner-mitarbeiter" class="spinner small"></span>
+    </div>
+
+    <div class="loading-step">
+      <span>Funktionen werden geladen …</span>
+      <span id="spinner-funktionen" class="spinner small"></span>
+    </div>
+
+    <div class="loading-step">
+     <span>AnmeldeInfos werden geladen …</span>
+     <span id="spinner-anmeldeInfos" class="spinner small"></span>
+    </div>
+
+  </div>
+
+  <!-- Admin-Login Overlay -->
+  <div id="adminLoginOverlay" class="overlay">
+    <div class="login-box">
+      <h2>Admin-Login</h2>
+      <input type="text" id="adminNameInput" placeholder="Admin Anmeldename" />
+      <button id="adminLoginButton"  onclick="checkAdminLogin()">Login</button>
+      <p id="loginMessage"></p>
+    </div>
+  </div>
+
+  <!-- Wartung -->
+  <section id="wartung-bereich">
+      <label>
+        <input type="checkbox" id="wartungsModusCheckbox" onclick="toggleWartungCheckbox(this.checked)">
+        Wartungsmodus: <span id="wartungs-status-anzeige">
+      </label>
+  </section>
+
+  <!-- Popup -->
+  <div id="popup" style="display: none;">
+    <div id="popup-content">
+      <p></p>
+      <button onclick="closePopup()">Schließen</button>
+    </div>
+  </div>
+
+  <!-- Änderungsprotokoll -->
+  <div id="aenderungsProtokollOverlay" class="protokoll-overlay">
+    <div class="protokoll-inhalt">
+      <h2>Änderungsprotokoll</h2>
+      <p id="aktuellerTerminProtokoll"></p> <ul id="aenderungsListe">
+      </ul>
+      <div class="protokoll-buttons">
+        <button id="abbrechenSpeichern" class="abbrechen-button">Abbrechen</button>
+        <button id="bestaetigenSpeichern" class="speichern-button">Speichern</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion -->
+  <div class="dashboard-container" id="main-accordion">
+    <div id="section-aktualisierung"></div>
+    <div id="section-mitarbeiter"></div>
+    <div id="section-anmeldung"></div>
+    <div id="section-export"></div>
+    <div id="section-auswertung"></div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

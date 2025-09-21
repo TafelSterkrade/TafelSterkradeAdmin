@@ -1,0 +1,88 @@
+/* --- layout.css 09.09.2025   Layout & Module General Styles ---------*/
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column; /* Stapelt die Module untereinander */
+  gap: 5px; /* Abstand zwischen den Modulen */
+  padding: 5px;
+}
+
+.module {
+  background-color: #e9ecef; /* Your original module background */
+  padding: 5px;
+  margin-bottom: 15px; /* Your original module margin */
+  border-radius: 6px;
+  border: 1px solid #ced4da; /* Your original module border */
+
+  /* Override accordion's general module border */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 5px; /* Abstand zwischen den Modulen */
+}
+
+.module h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1.0em;
+
+  /* Accordion Header Style */
+  background-color: #f0f0f0;
+  padding: 5px 5px;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  position: relative; /* Wichtig für die absolute Positionierung des Dreiecks */
+  padding-left: 25px; /* Platz für das Dreieck schaffen */
+}
+
+.module h2 svg { /* Für Icons als SVG */
+  margin-right: 8px;
+}
+
+.module p {
+  margin-bottom: 10px;
+}
+
+.module button {
+  display: block;
+  margin-bottom: 5px;
+  margin-right: 0;
+}
+
+.module-content {
+  padding: 5px;
+  display: none; /* Inhalt standardmäßig ausblenden */
+}
+
+/* Wartungsmodus Checkbox */
+#wartung-bereich {
+  display: flex;
+  align-items: center;
+  padding-left: 0px;
+}
+
+#wartungsModusCheckbox {
+  margin-right: 5px;
+  font-size: 1em;
+}
+
+#wartung-bereich label {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+#wartungs-status-anzeige {
+  font-size: 1.0em;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
+#wartungs-status-anzeige.eingeschaltet {
+  color: red;
+}
+
+#wartungs-status-anzeige.ausgeschaltet {
+  color: green;
+}
