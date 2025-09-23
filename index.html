@@ -44,7 +44,7 @@
   <div id="header">
     <div class="titleArea">
       <h1>Tafel Sterkrade Admin</h1>
-      <div class="version" id="version-admin">Version 5.09.23-1</div>
+      <div class="version" id="version-admin">Version 5.09.23-2</div>
       <div class="admin-title" id="adminIdent">angemeldet als:</div>
          <img src="TafelLogo.png" alt="Logo">
     </div>
@@ -52,8 +52,11 @@
 
   <!-- Ladebereich -->
   <div id="loading-overlay" class="loading-state hidden">
-    <p id="loading-text">Daten werden geladen...</p> 
-
+    <div class="loading-header">
+      <p id="loading-text">Daten werden geladen...</p> 
+      <button id="close-overlay-btn" onclick="closeOverlayLoading()">×</button>
+    </div>
+    
     <div class="loading-step">
      <span>Wartungsstatus wird geladen …</span>
      <span id="spinner-wartung" class="spinner small"></span>
