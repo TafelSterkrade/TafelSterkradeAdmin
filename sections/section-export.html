@@ -1,0 +1,83 @@
+<!--"section-export.html" 22.09.2025 -->
+
+    <section id="export-bereich" class="module" data-original-index="3">
+      <div class="module-header"> 
+        <h2>Export</h2>
+      </div>
+
+      <div class="module-content">
+
+<!------Tagesrapport -->
+        <div class="button-container">
+          <button class="exportRapport-button" onclick="openExportRapportOverlay()">Tagesrapport</button>
+        </div>
+
+<!------Tabelle Mitarbeiter -->
+        <div class="button-container">
+          <button class="exportMitarbeiter-button" onclick="openExportMitarbeiterOverlay()">Tabelle Mitarbeiter</button>
+        </div>
+
+<!------XLSExport 
+        <div class="button-container">
+          <button onclick="XLSExport(this)">XLS-Export "Tafel Sterkrade"</button>
+          <div class="loader" style="display: none;"></div>
+        </div>
+      </div>
+    </section>
+-->
+ 
+<!------Overlay Rapport -->
+<div id="overlayRapport" class="export-overlay">
+  <div id="overlayRapport-content" class="export-inhalt">
+    <h2 id="overlayRapport-title" class="export-title" >Export / Tagesrapport</h2>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 0.9em;">
+      <div style="display: flex; align-items: center; gap: 5px">
+        <button onclick="zeigeVorherigenTagesrapportTermin()">&#9668;</button>
+        <select id="tagesrapportTerminAuswahl" style="flex: 1"></select>
+        <button onclick="zeigeNaechstenTagesrapportTermin()">&#9658;</button>
+      </div>
+    </div>
+    
+    <p id="TagesrapportInfo" style="margin-bottom: 10px; font-size: 0.9em;"></p>
+
+    <div class="scrollbox scrollbox-anmeldungen">
+      <table id="scrollboxAnmeldungen-table"></table>
+    </div>
+
+    <div class="protokoll-buttons">
+      <button onclick="closeOverlayRapport()">Schließen</button>
+      <button onclick="createRapportAndExport('pdf')">PDF-Datei</button>
+      <button onclick="createRapportAndExport('xlsx')">XLSX-Datei</button> 
+    </div>
+
+    <div id="rapportStatusContainer" class="export-status-container">
+      <p id="rapportStatusText"></p>
+      <div id="rapportSpinner" class="spinner small hidden"></div>
+    </div>
+
+  </div>
+</div>
+
+<!------Overlay Mitarbeiter-Tabelle-->
+<div id="overlayMitarbeiter" class="export-overlay">
+  <div id="overlayMitarbeiter-content" class="export-inhalt">
+    <h2 id="overlayMitarbeiter-title" class="export-title">Export / Mitarbeiter-Tabelle</h2>
+    
+    <p>Wählen Sie die Spalten aus, die Sie exportieren möchten:</p>
+    
+    <div id="column-selection-container" class="column-selection-container scrollbox">
+      </div>
+
+    <div class="protokoll-buttons">
+      <button onclick="closeOverlayMitarbeiter()">Schließen</button>
+      <button onclick="exportMitarbeiter('pdf')">PDF-Datei</button>
+      <button onclick="exportMitarbeiter('xlsx')">XLSX-Datei</button>
+    </div>
+
+    <div id="mitarbeiterStatusContainer" class="export-status-container">
+      <p id="mitarbeiterStatusText"></p>
+      <div id="mitarbeiterSpinner" class="spinner small hidden"></div>
+    </div>
+  </div>
+</div>

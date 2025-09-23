@@ -1,0 +1,45 @@
+/* --- header.css 23.09.2025   Header Styles ---------*/
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 5px 10px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleArea h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  text-align: left;
+  color: #333;
+  margin-bottom: 0px; /* oder z. B. 2px */
+}
+
+.version {
+  margin-top: 0; /* entfernt zusätzlichen Abstand von oben */
+  font-size: 0.8rem !important;
+  color: #333;
+  margin-top: 2px;
+}
+
+.admin-title {
+  margin-top: 0; 
+  font-size: 0.8rem !important;
+  color: #333;
+  margin-top: 2px;
+}
+
+img {
+  width: 50px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

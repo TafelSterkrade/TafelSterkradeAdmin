@@ -1,0 +1,61 @@
+<!--"section-aktualisierung.html" 09.09.2025 -->
+
+<section id="aktualisierungs-bereich" class="module" data-original-index="0">
+  <div class="module-header"> 
+    <h2>Aktualisierung: <span id="aktualisierungs-status-text" >Status wird geladen ...</span></h2>
+  </div>
+  
+  <div class="module-content">
+    <table>
+      <thead>
+        <tr>
+          <th>Tabelle</th>
+          <th>Status</th>
+          <th>Aktion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-type="termine">
+          <td>Termine</td>
+          <td class="status-cell-clickable" data-target="row-details-termine"> <span id="termine-status-text"></span> <span class="toggle-icon" id="termine-toggle-icon">▼</span> </td>
+          <td>
+            <div class="button-with-loader-container">
+              <button class="action-button" onclick="aktualisiereTermine(this)">AKTUALISIEREN</button>
+              <div class="loader" style="display: none;"></div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="details-row" id="row-details-termine"> <td colspan="3">
+            <div class="detail-content">
+              <div class="zeitstempel"><span class="timestamp-label">Letzte Aktualisierung:</span> <span id="termine-aktualisierungsdatum"></span></div>
+              <div class="zeitstempel"><span class="timestamp-label">Letzte Prüfung:</span> <span id="termine-pruefdatum"></span></div>
+              <div class="pruefergebnis">Prüfergebnis: <span id="termine-detail-text"></span></div> </div>
+          </td>
+        </tr>
+
+        <tr data-type="mitarbeiter">
+          <td>Mitarbeiter</td>
+          <td class="status-cell-clickable" data-target="row-details-mitarbeiter"> <span id="mitarbeiter-status-text"></span> <span class="toggle-icon" id="mitarbeiter-toggle-icon">▼</span> </td>
+          <td>
+            <div class="button-with-loader-container">
+              <button class="action-button" onclick="aktualisiereMitarbeiter(this)">AKTUALISIEREN</button>
+              <div class="loader" style="display: none;"></div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="details-row" id="row-details-mitarbeiter"> <td colspan="3">
+            <div class="detail-content">
+              <div class="zeitstempel"><span class="timestamp-label">Letzte Aktualisierung:</span> <span id="mitarbeiter-aktualisierungsdatum"></span></div>
+              <div class="zeitstempel"><span class="timestamp-label">Letzte Prüfung:</span> <span id="mitarbeiter-pruefdatum"></span></div>
+              <div class="pruefergebnis">Prüfergebnis: <span id="mitarbeiter-detail-text"></span></div> </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pruefergebnis-hinweis">Fehlt: „aktiv, aber nicht in der Anmeldungstabelle“</div>
+    <div class="pruefergebnis-hinweis">Veraltet: „nicht aktiv, aber in der Anmeldungstabelle“</div>
+  </div>
+</section>
