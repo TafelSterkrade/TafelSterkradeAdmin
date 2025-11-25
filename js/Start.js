@@ -1,4 +1,4 @@
-// "Start.js"  15.11.2025 ----------
+// "Start.js"  25.11.2025 ----------
 
   let alleAnmeldeDaten = []; // Variable, um alle abgerufenen AnmeldeDaten zu speichern
   let alleFunktionenCache = []; // Neue Variable für die Funktionen
@@ -356,13 +356,15 @@ function ladeRapporte() {
 //-------------------------------------------------------------
     apiCall('getTagesrapporteList', {})
         .then(rapporte => {
-      console.log("rapporte: ", rapporte.length, rapporte);
-            rapporteCache = rapporte; // Speichere im Cache
-      console.log("rapporteCache: ", rapporteCache.length, rapporteCache);
-      zeigeRapporteTabelle(rapporteCache); 
+          console.log("rapporte: ", rapporte.length, rapporte);
+          rapporteCache = rapporte; // Speichere im Cache
+          console.log("rapporteCache: ", rapporteCache.length, rapporteCache);
+          zeigeRapporteTabelle(rapporteCache); 
         })
         .catch(error => {
-            console.error("Fehler beim Laden der Rapporte:", error);
+          console.error("Fehler beim Laden der Rapporte:", error);
+          rapporteCache = [];
+          zeigeRapporteTabelle(rapporteCache); 
         });
 }
 
@@ -372,13 +374,13 @@ function ladeTermine() {
 
     apiCall('getTermine', {})
         .then(termine => {
-      console.log("termine: ", termine.length, termine);
-            termineCache = termine; // Speichere im Cache
-      console.log("termineCache: ", termineCache.length, termineCache);
-      zeigeTermineTabelle(termineCache); 
+          console.log("termine: ", termine.length, termine);
+          termineCache = termine; // Speichere im Cache
+          console.log("termineCache: ", termineCache.length, termineCache);
+          zeigeTermineTabelle(termineCache); 
         })
         .catch(error => {
-            console.error("Fehler beim Laden der Temine:", error);
+          console.error("Fehler beim Laden der Temine:", error);
         });
 }
 
