@@ -1,4 +1,4 @@
-// "Mitarbeiter.js" 11.11.2025 -----
+// "Mitarbeiter.js" 12.12.2025 -----
 
 const formular = document.getElementById("mitarbeiter-formular");
 const toggleButton = document.getElementById("toggle-formular");
@@ -170,12 +170,35 @@ function entferneMarkierung() {
     tr.classList.remove("active-row");
   });
 }
+// Mitarbeiter.js (ab Zeile 264)
 
 //----------------------------------
 function fuelleFormular(zeile) {
 //----------------------------------
-  const id = zeile.cells[0].textContent.trim();
-  activeID = id;
+  let id;
+  
+  if (zeile) {
+    // 1. Wenn ein DOM-Element (Zeile) übergeben wurde
+    id = zeile.cells[0].textContent.trim();
+  } else if (activeID) {
+    // 2. Wenn KEIN DOM-Element übergeben wurde (zeile === null), aber eine activeID gesetzt ist
+    // Dies geschieht nach dem Anlegen eines nicht-gefilterten Mitarbeiters.
+    console.warn("fuelleFormular: Zeile nicht gefunden, nutze activeID für Datenabruf.");
+    id = activeID;
+    
+    // activeID muss aktualisiert werden, da es hier bereits gesetzt wurde (z.B. in starteNeuenMitarbeiterProzess)
+    // Wenn activeID auf "NEU" steht, aber der Mitarbeiter gespeichert wurde, 
+    // sollte die ID bereits auf die neue, echte ID gesetzt sein (siehe _handleSpeichernNeuerMitarbeiter).
+  } else {
+    // 3. Fallback, wenn weder Zeile noch activeID vorhanden ist
+    console.error("fuelleFormular: Kann ID nicht bestimmen.");
+    leereFormularfelder();
+    document.getElementById("anzeige-id").textContent = "";
+    document.getElementById("anzeige-name").textContent = "Keine Auswahl";
+    return;
+  }
+  
+  activeID = id; // activeID auf die gefundene/bestimmte ID setzen
 
   const mitarbeiter = alleMitarbeiterDaten.find(p => p.id === id);
 
@@ -187,14 +210,17 @@ function fuelleFormular(zeile) {
     return;
   }
 
+  // Ab hier ist die Logik universell, da die Daten aus dem 'mitarbeiter'-Objekt kommen
   document.getElementById("anzeige-id").textContent = mitarbeiter.id;
   document.getElementById("anzeige-name").textContent = mitarbeiter.name;
 
   document.getElementById("feld-name").value = mitarbeiter.nachname;
   document.getElementById("feld-vorname").value = mitarbeiter.vorname;
 
-  document.getElementById("feld-aktiv").checked = mitarbeiter.status.includes("aktiv");
-  document.getElementById("feld-admin").checked = mitarbeiter.status.includes("admin");
+  // Status-Parsing muss hier robust sein
+  const statusLower = (mitarbeiter.status || "").toLowerCase();
+  document.getElementById("feld-aktiv").checked = statusLower.includes("aktiv");
+  document.getElementById("feld-admin").checked = statusLower.includes("admin");
 
   document.getElementById("feld-anmeldename").value = mitarbeiter.anmeldename || "";
   document.getElementById("feld-email").value = mitarbeiter.email || "";
@@ -443,13 +469,14 @@ function speichereMitarbeiter(aenderungen, zeile) {
 function _handleSpeichernNeuerMitarbeiter(aenderungen) {
 //----------------------------------
   console.log("Starte Prozess: Speichere neuen Mitarbeiter.");
+  console.log("_handleSpeichernNeuerMitarbeiter", aenderungen);
 
   const datenFuerNeuenMitarbeiter = { ...aenderungen };
   delete datenFuerNeuenMitarbeiter.id;
 
   zeigeMitarbeiterSpinner(true);
 
-  apiCall('legeNeuenMitarbeiterAn', { mitarbeiterDaten: datenFuerNeuenMitarbeiter })
+  apiCall('legeNeuenMitarbeiterAn', { neueMitarbeiterDaten: datenFuerNeuenMitarbeiter })
     .then(res => {
       if (res.erfolg && res.neueId && res.mitarbeiterDaten) {
         showPopup("Neuer Mitarbeiter erfolgreich angelegt!");
@@ -491,6 +518,7 @@ function _handleSpeichernBestehenderMitarbeiter(aenderungen, zeile) {
 //----------------------------------
   console.log("Starte Prozess: Speichere bestehenden Mitarbeiter.");
   zeigeMitarbeiterSpinner(true);
+  console.log("_handleSpeichernBestehenderMitarbeiter", aenderungen);
 
   apiCall('speichereMitarbeiterDaten', { aenderungen: [aenderungen] })
     .then((res) => {
