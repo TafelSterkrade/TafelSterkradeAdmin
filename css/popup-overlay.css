@@ -1,0 +1,207 @@
+/* --- popup-overlay.css 14.12.2025   Popup & Overlay Styles ---------*/
+
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+#popup-content {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+#popup-content p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+#popup-content button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Stil für das Änderungsprotokoll-Overlay */
+.protokoll-overlay {
+  display: none;
+  /* Standardmäßig ausgeblendet */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow: auto;
+  justify-content: center;
+  /* Inhalt horizontal zentrieren */
+  align-items: center;
+  /* Inhalt vertikal zentrieren */
+}
+
+.protokoll-inhalt {
+  background-color: #f9f9f9;
+  margin: 50px auto;
+  /* Vertikalen Abstand und horizontale Zentrierung beibehalten */
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.protokoll-inhalt h2 {
+  /* Hier kannst du spezifische H2-Styles für das Protokoll hinzufügen, falls nötig */
+  margin-top: 0;
+  /* Standard-Margin oben entfernen */
+}
+
+#aenderungsListe {
+  list-style-type: none;
+  padding: 0;
+}
+
+#aenderungsListe li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#aenderungsListe li:last-child {
+  border-bottom: none;
+}
+
+#aenderungsListe li span:first-child {
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+#aenderungsListe li span:nth-child(2) {
+  padding-left: 10px;
+}
+
+.overlay-buttons {
+  text-align: left;
+  /* Buttons links ausrichten */
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  /* Buttons links ausrichten */
+}
+
+.overlay-buttons button {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.speichern-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.speichern-button:hover {
+  background-color: #0056b3;
+}
+
+.abbrechen-button {
+  background-color: #dc3545;
+  color: white;
+  /* Optional: Textfarbe für Abbrechen-Button */
+  border: none;
+  /* Optional: Entferne den Rahmen, da der Speichern-Button auch keinen hat */
+}
+
+.abbrechen-button:hover {
+  background-color: #c82333;
+}
+
+/* Admin-Login Overlay */
+#overlayAdminLogin.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000; /* höher als loading-overlay */
+}
+
+#overlayAdminLogin .login-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  text-align: center;
+  width: 280px;
+}
+
+/*  Overlay Änderungen Tabelle*/
+.aenderungen-tabelle {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.aenderungen-tabelle th,
+.aenderungen-tabelle td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.aenderungen-tabelle th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.aenderungen-tabelle tbody tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.aenderungen-tabelle tbody tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Stile für die Overlay-Container */
+.standard-overlay  {
+  /* Macht das Element zu einem Overlay, das die gesamte Ansicht abdeckt */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);       /* Fügt einen halbtransparenten Hintergrund hinzu */
+  display: flex;              /* Zentriert den Inhalt (das Inhaltsfenster) */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;   /* Stellt sicher, dass es über allen anderen Inhalten liegt */
+  display: none;   /* Standardmäßig versteckt */
+
+}
