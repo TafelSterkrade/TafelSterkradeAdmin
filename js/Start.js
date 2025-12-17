@@ -1,4 +1,4 @@
-// "Start.js"  25.11.2025 ----------
+// "Start.js"  17.12.2025 ----------
 
   let alleAnmeldeDaten = []; // Variable, um alle abgerufenen AnmeldeDaten zu speichern
   let alleFunktionenCache = []; // Neue Variable für die Funktionen
@@ -102,6 +102,8 @@ apiCall('getTestversion', {})
 function loadInitialData() {
 // ----------------------------------
   document.getElementById("loading-overlay").classList.remove("hidden");
+
+  LadeTafelVersion();
 
   setSpinnerState("spinner-wartung", true);
   apiCall('getWartungsStatus', {})
@@ -334,6 +336,33 @@ function updateWartungsStatus(status) {
     }
   console.log("updateWartungsStatus:", status);
   setSpinnerState("spinner-wartung", false);
+
+}
+
+// ----------------------------------
+async function LadeTafelVersion() { // <--- async hinzugefügt
+// ----------------------------------
+  const TafelVersion = document.getElementById("TafelVersion");
+
+  try {
+    // await sagt: Warte hier, bis die Antwort vom Server da ist
+    const TafelInfo = await apiCall('getTafelVersion', {});
+
+    console.log("LadeTafelVersion:", TafelInfo);
+    TafelVersion.textContent = TafelInfo;
+  } catch (error) {
+    console.error("Fehler beim Aufruf von getTafelVersion " );
+  }
+}
+// ----------------------------------
+function xxxLadeTafelVersion() {
+// ----------------------------------
+  const TafelVersion = document.getElementById("TafelVersion");
+
+  const TafelInfo =  apiCall('getTafelVersion', {})
+
+  console.log("LadeTafelVersion:", TafelInfo);
+  TafelVersion.textContent = TafelInfo;
 
 }
 
