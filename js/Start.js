@@ -1,4 +1,4 @@
-// "Start.js"  17.12.2025 ----------
+// "Start.js"  23.12.2025 ----------
 
   let alleAnmeldeDaten = []; // Variable, um alle abgerufenen AnmeldeDaten zu speichern
   let alleFunktionenCache = []; // Neue Variable für die Funktionen
@@ -480,6 +480,7 @@ function performAdminLoginCheck(name, msgEl, btnEl) {
         isLoggedIn = true; // Status auf "eingeloggt" setzen
         currentAdmin = admin;
         adminmail = admin.email || "";
+        const anmelde = admin.anmeldename;
         document.getElementById("overlayAdminLogin").style.display = "none";
         console.log("✅ Admin-Login erfolgreich:", admin);
 
@@ -487,6 +488,8 @@ function performAdminLoginCheck(name, msgEl, btnEl) {
         if (adminIdentDiv) {
             adminIdentDiv.textContent = "angemeldet als: " + admin.vorname + " " + admin.nachname + ", " + admin.email;
         }
+
+        apiCall('WriteLoginAdmin', { anmelde })
 
       } else {
         msgEl.textContent = "❌ Kein Admin-Zugang.";
