@@ -1,0 +1,172 @@
+/* --- news.css 16.12.2025  ----------*/
+
+
+.NewsEdit-inhalt {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    
+    /* Feste Höhe und Breite */
+    width: 400px;
+    height: 330px; /* Beispielwert, kannst du anpassen */
+    
+    /* Scrollen wird auf das Inhaltsfenster beschränkt */
+    overflow-y: auto;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Formgruppen */
+.newsedit-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.newsedit-group label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.newsedit-group input[type="text"],
+.newsedit-group input[type="email"],
+.newsedit-group input[type="date"] {
+  padding: 6px;
+  font-size: 13px;
+  width: 95%;
+}
+
+/* Volle Breite für Adressfeld */
+.newsedit-group.adresse {
+  grid-column: 1 / -1;
+}
+
+.newsedit-group .checkboxes {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
+.NewsRapport-inhalt {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    
+    /* Feste Höhe und Breite */
+    width: 330px;
+    height: 480px; /* Beispielwert, kannst du anpassen */
+    
+    /* Scrollen wird auf das Inhaltsfenster beschränkt */
+    overflow-y: auto;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scrollbox-NewsRapport {
+  /* Feste Höhe für die Scrollbox */
+  height: 250px; 
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.scrollbox-News {
+  /* Feste Höhe für die Scrollbox */
+  height: 100px; 
+  max-width: 300px; 
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* Styling für die Haupt-News-Tabelle */
+#news-table{
+    /* Stellt sicher, dass die Breite der Spalten durch <col> oder td/th definiert wird */
+    table-layout: fixed; 
+    width: 100%; /* Nehmen Sie die gesamte Breite des Containers ein */
+}
+
+/* Definition der Spaltenbreiten für alle Zeilen (tr > *) */
+#news-table tr > *{
+    white-space: nowrap;  /* 1. Umbruch verhindern */
+    overflow: hidden;  /* 2. Überlaufenden Text ausblenden */
+    text-overflow: ellipsis;  /* 3. Ausgeblendeten Text mit Ellipse (...) markieren */
+}
+
+/* Spezifische Breiten der ersten Spalte (td:nth-child(1)) */
+#news-table tr > :nth-child(1){
+    width: 10%; 
+}
+
+.newsinfo-bereich {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  font-style: italic;
+  color: #9b1717;
+  text-align: left;
+  font-size: 13px;
+}
+
+
+/* Popups Overlay News */
+
+#overlayNews {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Wichtig: Standardmäßig ausgeblendet */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Inhalt-Container */
+#overlayNews-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 300px; 
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.0rem;
+}
+
+#overlayNews-text {
+    font-size: 1.0rem;
+}
+
+.decision-group {
+    margin-bottom: 20px;
+}
+
+/* Radio-Labels untereinander anordnen */
+.decision-group .radio-label {
+    display: block; /* Jedes Label nimmt eine eigene Zeile ein */
+    text-align: left; /* Text linksbündig */
+    margin-bottom: 1px; /* Abstand zwischen den Optionen */
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 4px;
+}
+
+/* Optional: Radio-Input und Text leicht ausrichten */
+.decision-group .radio-label input[type="radio"] {
+    margin-right: 10px;
+    vertical-align: middle; /* Stellt sicher, dass der Radio-Kreis mit dem Text auf einer Linie liegt */
+}
+
+/* Optional: Optische Rückmeldung beim Hover/Fokus */
+.decision-group .radio-label:hover {
+    background-color: #f0f0f0; /* Hintergrundfarbe bei Hover */
+}

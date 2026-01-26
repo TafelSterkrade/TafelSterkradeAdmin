@@ -1,0 +1,115 @@
+<!--"section-news.html" 16.12.2025 -->
+
+    <section id="news-bereich" class="module" data-original-index="3">
+      <div class="module-header"> 
+        <h2>Nachrichten</h2>
+      </div>
+
+      <div class="module-content">
+
+        <div class="scrollbox scrollbox-News">
+          <table id="news-table"></table>
+        </div>
+
+        <p id="NewsInfo" class="newsinfo-bereich" >Nachricht wird nur angezeigt, wenn Titel und Text nicht leer sind!</p>
+
+        <div class="section-buttons">
+          <button id="newsbearbeitenButton"  onclick="openOverlayNewsBearbeiten()" >Bearbeiten ►</button>
+          <button id="newsRapportButton"  class="hidden" onclick="openOverlayNewsRapport()" >Abfrage-Rapport ►</button>
+        </div>
+
+      </div>
+    </section>
+
+<!------Overlay Erstelle NewsRapport -->
+<div id="overlayNewsRapport" class="standard-overlay">
+  <div id="overlayNewsRapport-content" class="NewsRapport-inhalt">
+    <h2 id="overlayNewsRapport-title" class="export-title" >Nachricht-Rapport</h2>
+
+    <h2 id="NewsRapport-Title" class="export-title" >Abfrage </h2>
+
+    <p id="NewsRapport-Info" class="scrollboxZusatzInfo" >0 ja, 0 nein, 0 weiß_nicht</p>
+
+
+    <div class="scrollbox scrollbox-NewsRapport">
+      <table id="scrollboxNewsRapport-table"></table>
+    </div>
+
+    <div class="overlay-buttons">
+      <button onclick="closeOverlay('overlayNewsRapport')">Schließen</button>
+      <button onclick="exportNewsRapport2PdfAndDownload()">PDF-Datei</button>
+      <button onclick="exportNewsRapport2XlsxAndSendMail()">XLSX-Datei</button> 
+    </div>
+
+    <div id="NewsRapportExportContainer" class="export-status-container">
+      <p id="NewsRapportStatusText"></p>
+      <div id="NewsRapportSpinner" class="spinner small hidden"></div>
+    </div>
+
+  </div>
+</div>
+
+<!------Overlay Bearbeite News -->
+<div id="overlayNewsEdit" class="standard-overlay">
+  <div id="overlayNewsEdit-content" class="NewsEdit-inhalt">
+    <h2 id="overlayNewsEdit-title" class="export-title" >Nachricht Bearbeiten</h2>
+
+      <div id="NewsEdit-eingaben">
+        <div class="newsedit-group">
+          <label for="newsTitel">Titel</label>
+          <input type="text" id="newsTitel" />
+        </div>
+
+        <div class="newsedit-group">
+          <label for="newsText">Text</label>
+          <input type="text" id="newsText1" />
+          <input type="text" id="newsText2" />
+          <input type="text" id="newsText3" />
+        </div>
+
+        <div class="newsedit-group">
+          <div class="checkboxes">
+            <label><input type="checkbox" id="newsAbfrage" /> Abfrage</label>
+          </div>
+        </div>
+      </div>
+
+      <p class="newsinfo-bereich" >Nachricht wird nur angezeigt, wenn Titel und Text nicht leer sind!</p>
+    
+    <div class="overlay-buttons">
+      <button onclick="closeOverlay('overlayNewsEdit')">Schließen</button>
+      <button onclick="saveOverlayNewsEdit()">Speichern</button>
+      <button onclick="previewOverlayNewsEdit()">Vorschau</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- overlay News -->
+<div id="overlayNews">
+    <div id="overlayNews-content">
+        <h2 id="overlayNews-title" class="overlay-title">Nachricht:</h2>
+
+        <div id="overlayNewstext-area">
+            <p id="overlayNews-text"></p> 
+        </div>
+
+        <div id="decision-options" class="decision-group">
+            <label class="radio-label">
+                <input type="radio" name="newsDecision" value="ja">ja
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="newsDecision" value="nein" >nein
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="newsDecision" value="weiss_nicht" >Ich weiß noch nicht
+            </label>
+        </div>
+
+        <button class="close-button" onclick="closeOverlay('overlayNews')" >Schließen</button> 
+        
+    </div>
+</div>    
+
+
+
