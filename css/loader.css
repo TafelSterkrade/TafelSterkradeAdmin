@@ -1,0 +1,68 @@
+/* --- loader.css 09.09.2025   Loading Spinners Styles ---------*/
+
+.loader {
+  border: 3px solid #f3f3f3; /* Light grey */
+  border-top: 3px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+  display: inline-block; /* Damit er neben dem Button angezeigt werden kann */
+  margin-left: 5px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#lade-spinner {
+  border: 2px solid #ccc; /* Light grey border */
+  border-top: 2px solid #333; /* Black border on top to create the effect */
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  animation: spin 1s linear infinite;
+  margin-left: 0.5em; /* Some space between text and spinner */
+  display: inline-block; /* Ensure it's in line with the text */
+}
+
+/* Loader innerhalb des Button-Containers */
+#loading-overlay {
+  position: relative; /* Referenz für den Button */
+}
+
+.loading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* etwas Abstand zu den Schritten */
+}
+
+#loading-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#close-overlay-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;       /* runder Button */
+  background: #eee;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+#close-overlay-btn:hover {
+  background: #c00;
+  color: #fff;
+}
+

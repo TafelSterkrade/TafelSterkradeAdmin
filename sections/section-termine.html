@@ -1,0 +1,112 @@
+<!--"section-termine.html" 16.11.2025 -->
+
+    <section id="termine-bereich" class="module" data-original-index="3">
+      <div class="module-header"> 
+        <h2>Termine</h2>
+      </div>
+
+      <div class="module-content">
+
+        <div class="section-buttons">
+          <button id="termineNeuButton"  onclick="openOverlayNeueTerminZeileHinzufuegen()" >Neuer Termin ►</button>
+          <button id="termineTafelWochentageButton"  onclick="openOverlayTafelWochentage()" >Tafel Wochentage ►</button>
+        </div>
+
+        <div id="termine-tabelle">
+        </div>
+        <div id="termineinfo-bereich">
+        </div>
+
+        <div class="section-buttons">
+          <button id="termineSpeichernButton" onclick="openOverlayTermineAenderungenProtokoll()" >speichern ►</button>
+          <button id="termineZuruecksetzenButton" onclick="zuruecksetzenTermineTabelle()" >zurücksetzen ►</button>
+        </div>
+
+      </div>
+    </section>
+
+
+  <!--  overlay: Termine Neu  -->
+   <div id="overlayTermineNeu" class="standard-overlay">
+      <div id="overlayTermineNeu-content" class="termine-inhalt">
+
+      <h3>Neuen Termin einfügen</h3>
+      <p>Geben Sie das Datum für den außerplanmäßigen Termin ein. Das Datum muss in der Zukunft liegen und darf kein bereits existierender Termin sein.</p>
+                
+      <label for="neuer-termin-datum">Datum:</label>
+      <input type="date" id="neuer-termin-datum" required>
+                
+      <div id="neuer-termin-meldung" class="error-message hidden"></div>
+
+      <div class="overlay-buttons">
+        <button onclick="closeOverlay('overlayTermineNeu')" class="cancel-button">Abbrechen</button>
+        <button onclick="verarbeiteNeuenTermin()" class="save-button">Einfügen</button>
+      </div>
+    </div>
+  </div>
+  
+  <!--overlay: Termine AenderungenProtokoll  -->
+    <div id="OverlayTermineAenderungenProtokoll" class="protokoll-overlay">
+      <div class="overlay-inhalt">
+        <h3>Termmin Änderungen</h3>
+        <div class="overlay-table-container">
+          <table id="termine-aenderungen-tabelle" class="aenderungen-tabelle">
+            <thead>
+              <tr>
+                <th>Termin</th>
+                <th>Status</th>
+                <th>Aktion</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="overlay-buttons">
+          <button onclick="closeOverlay('OverlayTermineAenderungenProtokoll')" class="cancel-button">Abbrechen</button>
+          <button onclick="speichereOverlayTermineAenderungen()" class="save-button">Speichern</button>
+          <div id="termine-spinner" style="display: none; margin-left: 10px;">
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+      </div>
+    </div> 
+
+  <!--  overlay: TafelWochentage  -->
+  <div id="overlayTafelWochentage" class="standard-overlay">
+    <div id="overlayTafelWochentage-content" class="termine-inhalt">
+
+      <h3>Tafel Wochentage festlegen</h3>
+      <p>Wählen Sie den planmäßigen Tafel Wochentag.</p>
+                
+      <div id="TafelWochentage-selection-container" class="TafelWochentage-selection-container scrollbox"> 
+      </div>
+
+        <div class="overlay-buttons"> 
+        <button onclick="closeOverlay('overlayTafelWochentage')" class="cancel-button">Abbrechen</button>
+        <button onclick="verarbeiteTafelWochentage()" class="save-button">Übernehmen</button>
+      </div>
+    </div>
+  </div>
+
+  <!--  overlay: Termin- Status bearbeitung -->
+  <div id="overlayTerminStatus" class="standard-overlay">
+    <div id="overlayTerminStatus-content" class="termine-inhalt">
+      <h3>Termin Status bearbeiten</h3>
+
+      <div id="TerminStatus-Datum">
+      </div>
+
+      <label for="TerminStatus-Status">Status:</label>
+      <input type="text" id="TerminStatus-Status">
+
+      <div class="overlay-buttons"> 
+        <button onclick="closeOverlay('overlayTerminStatus')" class="cancel-button">Abbrechen</button>
+        <button onclick="verarbeiteTerminStatus()" class="save-button">Übernehmen</button>
+      </div>
+
+    </div>
+  </div>
+
