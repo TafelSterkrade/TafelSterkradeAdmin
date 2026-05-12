@@ -1,0 +1,150 @@
+<!--"section-mitarbeiter.html" 19.11.2025 -->
+
+<section id="mitarbeiter-anzeige-bereich" class="module" data-original-index="1">
+  <div class="module-header module-header-with-filter">
+    <h2>Mitarbeiter <span id="mitarbeiter-anzahl"></span></h2> 
+    <div id="mitarbeiter-filter-bereich" style="display: none;">
+      <label>
+        <input type="checkbox" id="mitarbeiterFilterAktiv" checked /> Nur aktive
+      </label>
+    </div>
+  </div> <!--class="module-header"-->
+
+  <div class="module-content">
+    <button id="exportMitarbeiter-button" onclick="openOverlayExportMitarbeiter()">Export Tabelle Mitarbeiter</button>
+
+    <div id="table-area">
+      <table id="mitarbeiter-tabelle">
+        <colgroup>
+          <col style="width: 5%;" />
+          <col style="width: 35%;" />
+          <col style="width: 30%;" />
+          <col style="width: 30%;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Vorname</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table> <!--id="mitarbeiter-tabelle" -->
+    </div>  <!--id="table-area" -->
+
+    <div id="mitarbeiter-formular">
+      <div id="formular-kopf">
+        <span id="toggle-formular" class="toggle-button">▼</span>
+        ID: <span id="anzeige-id">1</span> –
+        <span id="anzeige-name">Max Mustermann</span>
+        <button id="btn-speichern" class="save-button" style="display: none;">Speichern</button>
+        <button id="btn-neuer-mitarbeiter" class="new-employee-button" style="display: none;">Neuer Mitarbeiter</button>
+        <div id="mitarbeiter-spinner" style="display: none; margin-left: 10px;">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <div id="formular-eingaben">
+        <div class="form-group">
+          <label for="feld-name">Name</label>
+          <input type="text" id="feld-name" />
+        </div>
+
+        <div class="form-group">
+          <label for="feld-vorname">Vorname</label>
+          <input type="text" id="feld-vorname" />
+        </div>
+
+        <div class="form-group status-group">
+          <label>Status</label>
+          <div class="checkboxes">
+            <label><input type="checkbox" id="feld-aktiv" /> aktiv</label>
+            <label><input type="checkbox" id="feld-admin" /> Admin</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feld-anmeldename">Anmeldename</label>
+          <input type="text" id="feld-anmeldename" />
+        </div>
+
+        <div class="form-group">
+          <label for="feld-email">Emailadresse</label>
+          <input type="text" id="feld-email" />
+        </div>
+
+        <div class="form-group">
+          <label for="feld-geburtstag">Geburtstag [tt.mm.jjjj]</label>
+          <input type="text" id="feld-geburtstag" />
+        </div>
+
+        <div class="form-group">
+          <label for="feld-mobil">Mobil</label>
+          <input type="text" id="feld-mobil" />
+        </div>
+
+        <div class="form-group">
+          <label for="feld-telefon">Telefon</label>
+          <input type="text" id="feld-telefon" />
+        </div>
+
+        <div class="form-group adresse">
+          <label for="feld-adresse">Adresse</label>
+          <input type="text" id="feld-adresse" />
+        </div>
+      </div>
+    </div>  <!--id="mitarbeiter-formular" -->
+
+<!------Overlay Mitarbeiter - AenderungenProtokoll -->
+<!--<div id="OverlayMitarbeiterAenderungenProtokoll" class="mitarbeiter-overlay" style="display: none;"> -->
+    <div id="OverlayMitarbeiterAenderungenProtokoll" class="protokoll-overlay">
+      <div class="overlay-inhalt">
+        <h3 id="overlay-titel"></h3> 
+        <div class="overlay-table-container">
+          <table id="mitarbeiter-aenderungen-tabelle" class="aenderungen-tabelle">
+            <thead>
+              <tr>
+                <th>Eigenschaft</th>
+                <th>Neu</th>
+                <th>Alt</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="overlay-buttons">  <!--"xxxoverlayMitarbeiter-buttons" -->
+          <button id="mitarbeiter-overlay-abbrechen" class="abbrechen-button">Abbrechen</button>
+          <button id="mitarbeiter-overlay-bestaetigen" class="bestaetigen-button">Bestätigen</button>
+        </div>
+      </div>
+    </div>  <!--id="OverlayMitarbeiterAenderungenProtokoll" -->
+
+  </div> <!--class="module-content"-->
+</section>
+
+
+<!------Overlay Export Mitarbeiter-Tabelle-->
+<div id="overlayExportMitarbeiter" class="standard-overlay">
+  <div id="overlayExportMitarbeiter-content" class="export-inhalt">
+    <h2 id="overlayExportMitarbeiter-title" class="export-title">Export / Mitarbeiter-Tabelle</h2>
+    
+    <p>Wählen Sie die Spalten aus, die Sie exportieren möchten:</p>
+    
+    <div id="column-selection-container" class="column-selection-container scrollbox">
+    </div>
+
+    <div class="overlay-buttons">
+      <button onclick="closeOverlayExportMitarbeiter()">Schließen</button>
+      <button onclick="exportMitarbeiter('pdf')">PDF-Datei</button>
+      <button onclick="exportMitarbeiter('xlsx')">XLSX-Datei</button>
+    </div>
+
+    <div id="mitarbeiterStatusContainer" class="export-status-container">
+      <p id="mitarbeiterStatusText"></p>
+      <div id="mitarbeiterSpinner" class="spinner small hidden"></div>
+    </div>
+  </div>
+</div>

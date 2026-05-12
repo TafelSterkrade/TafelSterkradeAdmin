@@ -1,0 +1,179 @@
+/* --- rapporte.css 12.01.2026  ---------*/
+/* Selectbox */
+.rapportfilter-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.rapportfilter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.rapportfilter-group label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Container für die Tabelle */
+#rapporte-tabelle {
+    /* Optional: falls die Tabelle scrollbar sein soll */
+    max-height: 250px; 
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Die eigentliche Tabelle */
+#rapporte-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Rahmen um die gesamte Tabelle */
+    background-color: white; /* Stellen Sie sicher, dass der Tabellenhintergrund weiß ist */
+}
+
+#rapporte-data-table th,
+#rapporte-data-table td {
+    border: 1px solid #ccc;
+    padding: 8px 10px; /* Etwas mehr Padding für bessere Lesbarkeit */
+    text-align: left;
+    /* Wichtig: Alle Zellen sollen den Zeilen-Hintergrund erben (Standard ist Weiß) */
+    background-color: transparent; 
+}
+
+/* Tabellenkopf (Überschriften) */
+#rapporte-data-table th {
+    background-color: #333; /* Dunkler Hintergrund */
+    color: white;
+    font-weight: bold;
+    position: sticky; /* Wichtig für scrollbare Container */
+    top: 0;
+    z-index: 10;
+}
+
+/* Zeilenstile */
+/* **WICHTIG:** Entfernen der abwechselnden Hintergrundfarbe (Streifenoptik) */
+#rapporte-data-table tbody tr:nth-child(even) {
+    background-color: transparent; 
+}
+
+/* Normale Zeilen sind Weiß. Nur der Hover-Effekt ändert die Farbe leicht. */
+#rapporte-data-table tbody tr:hover {
+    background-color: #e6e6e6; /* Hervorhebung bei Hover (Standard) */
+}
+
+
+/* 2. Aktionsspalte: Buttons nebeneinander und klein */
+#rapporte-data-table td.action-cell {
+    min-height: 30px; 
+    padding: 4px 8px; 
+    width: 80px; 
+    text-align: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* Stilregeln für die Buttons in der Aktionsspalte */
+#rapporte-data-table td.action-cell button {
+    width: 24px;
+    height: 24px;
+    line-height: 1; 
+    padding: 0;
+    margin: 0 3px; 
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px; 
+    transition: background-color 0.2s;
+}
+
+#rapporte-data-table td.action-cell button:hover {
+    background-color: #ddd;
+}
+
+
+.abfrage-inhalt {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 330px; /* Feste Höhe und Breite */
+    overflow-y: auto;  /* Scrollen wird auf das Inhaltsfenster beschränkt */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn {
+    background-color: #e0e0ff;
+}
+
+.delete-btn {
+    background-color: #f0eaeae8;
+}
+
+.edit-btn {
+    background-color: #7ba88ee8;
+}
+
+
+#rapporte-data-table td.action-cell button:hover {
+    background-color: #ddd;
+}
+
+
+.edit-version-row {
+    background-color: #e3f2fd !important; /* Leichtes Blau */
+    font-weight: 500;
+}
+
+.edit-version-row td:first-child::before {
+    content: "📝 "; /* Kleines Icon vor dem Namen */
+}
+
+
+/* 1. Die Animation definieren */
+@keyframes row-highlight-flash-anim {
+    0% { background-color: #c8e6c9 !important; }
+    100% { /* Rückkehr zur Farbe der Klasse */ }
+}
+
+/* WICHTIG: Die Animation auf alle TD der Flash-Zeile */
+#rapporte-data-table tbody tr.row-success-flash td {
+    animation: flash-green 3s ease-out forwards !important;
+}
+
+/* 
+#rapporte-data-table tbody tr.row-success-flash td {
+    animation: row-highlight-flash-anim 3s ease-out forwards !important;
+}
+*/
+
+
+/* Responsive Anpassungen */
+@media (max-width: 600px) {
+    #rapporte-data-table {
+        font-size: 12px;
+    }
+    #rapporte-data-table th,
+    #rapporte-data-table td {
+        padding: 6px 8px;
+    }
+    
+    /* Buttons auf kleinen Screens noch kleiner machen */
+    #rapporte-data-table td.action-cell button {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+    #rapporte-data-table td.action-cell {
+        width: 60px; /* Schmaler Aktionsbereich */
+    }
+}
